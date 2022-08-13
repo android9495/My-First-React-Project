@@ -1,23 +1,19 @@
 import MenuItem from "../base/menuItem";
+import {Link} from "react-router-dom";
+import TransparentHeader from "./headers/TransparentHeader";
+import Header from "./headers/Header";
+import {useLocation} from "react-router-dom";
 
 const Layout = ({children}) => {
+    const {pathname} = useLocation();
     return (
         <>
-            <header>
-                <a href="/" className="identity">
-
-                </a>
-                <nav className="menu-list-items">
-                    <ul>
-                      <MenuItem link="/" label="home"/>
-                      <MenuItem link="/about-us" label="about us"/>
-                      <MenuItem link="/stones" label="stones"/>
-                      <MenuItem link="/blog" label="blog"/>
-                      <MenuItem link="/contact-us" label="contact us"/>
-                      <MenuItem link="/*" label="404"/>
-                    </ul>
-                </nav>
-            </header>
+            {
+                pathname === '/' ?
+                    (<TransparentHeader/>)
+                    :
+                    (<Header/>)
+            }
             {children}
             <footer>
                 footer
