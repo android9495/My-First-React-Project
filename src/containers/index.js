@@ -14,10 +14,19 @@ const Layout = ({children}) => {
                     :
                     (<Header/>)
             }
-            {children}
-            <footer>
-                footer
-            </footer>
+            <main>
+                {children}
+            </main>
+            {
+               pathname === '/' ?
+                   ('')
+                   :
+                   (
+                       <footer>
+                           footer
+                       </footer>
+                   )
+            }
         </>
     )
 }
