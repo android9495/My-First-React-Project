@@ -1,6 +1,10 @@
+import {Section} from "../base/section";
+
 const About = () => {
     return(
-        <h2>About</h2>
+        <Section>
+            <h1>About us</h1>
+        </Section>
     )
 }
 export default About;

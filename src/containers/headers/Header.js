@@ -14,7 +14,7 @@ const Header = () => {
                     <MenuItem link="/stones" label="stones"/>
                     <MenuItem link="/blog" label="blog"/>
                     <MenuItem link="/contact-us" label="contact us"/>
-                    <MenuItem link="/login" label="login"/>
+                    <MenuItem link="/register" label="register"/>
                 </ul>
             </nav>
         </header>

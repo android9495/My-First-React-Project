@@ -41,6 +41,11 @@ body{
 .otherWrapper {
   padding-top: 10vh;
 }
+section.wrapper {
+  padding-top: 10vh;
+  @include paddingLR;
+  color: $white-color;
+}
 /*================GENERAL CLASS=================*/
 /*============NAV==============*/
 .other-header {
@@ -395,4 +400,27 @@ form input:-moz-placeholder,form textarea:-moz-placeholder { /* Firefox 18- */
   color: #ccc;
 }
 /*============LOGIN==============*/
+/*============REGISTER==============*/
+.registerFinalWrapper {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  display: flex;
+  align-items: center;
+  @include paddingLR;
+  h1{
+    font-size: 1.6rem;
+    color: $white-color;
+    margin: 0;
+    padding-right: 2rem;
+  }
+  img{
+    height: 3rem;
+  }
+  span{
+    font-size: 0.9rem;
+    font-weight: 100;
+  }
+}
+/*============REGISTER==============*/
 

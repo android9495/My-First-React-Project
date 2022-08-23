@@ -8,3 +8,11 @@ export const SectionDefault = (props) => {
         </section>
     )
 }
+export const Section = (props) => {
+    const {children} = props;
+    return(
+        <section className="wrapper">
+            {children}
+        </section>
+    )
+}
