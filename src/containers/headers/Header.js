@@ -1,7 +1,9 @@
 import {Link} from "react-router-dom";
 import MenuItem from "../../base/menuItem";
+import {useSelector} from "react-redux";
 
 const Header = () => {
+    const {user} = useSelector(state => state)
     return(
         <header className="other-header">
             <Link to="/" className="identity">
@@ -14,7 +16,12 @@ const Header = () => {
                     <MenuItem link="/stones" label="stones"/>
                     <MenuItem link="/blog" label="blog"/>
                     <MenuItem link="/contact-us" label="contact us"/>
-                    <MenuItem link="/register" label="register"/>
+                    {
+                        user.firstname ?
+                            (<MenuItem link="/user-account" label="Hello" username={user.firstname}/>)
+                            :
+                            (<MenuItem link="/register" label="register"/>)
+                    }
                 </ul>
             </nav>
         </header>

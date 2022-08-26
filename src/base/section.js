@@ -16,3 +16,12 @@ export const Section = (props) => {
         </section>
     )
 }
+
+export const SectionUserAccount = (props) => {
+    const {children} = props;
+    return(
+        <section className="wrapper userAccountSection">
+            {children}
+        </section>
+    )
+}

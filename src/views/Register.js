@@ -5,6 +5,8 @@ import {useDispatch} from "react-redux";
 import {ACTION_UPDATE_USER} from "../redux/slices/userSlice";
 import {useNavigate} from 'react-router-dom';
 import {useEffect, useState} from "react";
+import {Base64} from "../helpers/base64";
+import {VisiblePassword} from "../base/visiblePassword";
 
 const Register = () => {
     const dispatcher = useDispatch();
@@ -18,20 +20,32 @@ const Register = () => {
     const nav = useNavigate();
 
     useEffect(() => {
-       if(avatar.length < 1) return;
-       const newAvatarURLs = [];
-       avatar.forEach(image => newAvatarURLs.push(URL.createObjectURL(image)));
-       setAvatarURLs(newAvatarURLs);
+        if(avatar.length < 1) return;
+        const newAvatarURLs = [];
+        avatar.forEach(image => newAvatarURLs.push(URL.createObjectURL(image)));
+        setAvatarURLs(newAvatarURLs);
     },[avatar])
 
-    const Login = () => {
-       dispatcher(ACTION_UPDATE_USER({firstname:firstname,lastname:lastname,email:email,phone:phoneNum,password:password}));
-       setTimeout(() => {
-           nav('/register-final')
-       },500)
+    const Login = async () => {
+        const userPicture = await setConvert();
+        dispatcher(ACTION_UPDATE_USER({avatar:userPicture,firstname:firstname,lastname:lastname,email:email,phone:phoneNum,password:password}));
+        localStorage.setItem('user',firstname)
+        setTimeout(() => {
+            nav('/register-final')
+        },500)
     }
     const onChangeAvatar = (e) => {
         setAvatar([...e.target.files]);
+    }
+    const setConvert = async () => {
+        const file = document.getElementById('photo-upload').files[0];
+        try {
+            const resultFile = await Base64(file);
+            return resultFile
+        } catch(error) {
+            console.error(error);
+            return;
+        }
     }
     return(
         <SectionDefault>
@@ -39,11 +53,13 @@ const Register = () => {
                 <Row className="justify-content-center">
                     <Col md={12} xl={6}>
                         <Form>
-                            <FormGroup>
-                                <img src={avatar} alt=""/>
+                            <FormGroup className="avatar-wrap">
                                 <input id="photo-upload" type="file" onChange={onChangeAvatar} accept="image/*"/>
                                 {
-                                    avatarURLs.map(avatarSrc => <img src={avatarSrc}/>)
+                                    avatar.length ?
+                                        (avatarURLs.map((avatarSrc,index) => <img key={index} src={avatarSrc} className="avatarPicture"/>))
+                                        :
+                                        (<img src={window.location.origin+'/images/user-svgrepo-com.svg'} alt="" className="bye"/>)
                                 }
                             </FormGroup>
                             <FormGroup className="form__group field">
@@ -55,8 +71,8 @@ const Register = () => {
                                 <Label for="lastName" className="form__label">Last Name</Label>
                             </FormGroup>
                             <FormGroup className="form__group field">
-                                <Input id="loginUser" name={email} placeholder="Email Address" type="email" className="form__field" onChange={onChangeEmail}/>
-                                <Label for="loginUser" className="form__label">Email Address</Label>
+                                <Input id="email" name={email} placeholder="Email Address" type="email" className="form__field" onChange={onChangeEmail}/>
+                                <Label for="email" className="form__label">Email Address</Label>
                             </FormGroup>
                             <FormGroup className="form__group field">
                                 <Input id="phoneNumber" name={phoneNum} placeholder="Phone Number" type="text" className="form__field" onChange={onChangePhoneNum}/>
@@ -65,6 +81,10 @@ const Register = () => {
                             <FormGroup className="form__group field">
                                 <Input id="passUser" name={password} placeholder="Password" type="password" className="form__field" onChange={onChangePassword}/>
                                 <Label for="passUser" className="form__label">Password</Label>
+                                <VisiblePassword>
+                                    <img src={window.location.origin+'/images/visibility.svg'}/>
+                                    <img src={window.location.origin+'/images/hidden.svg'}/>
+                                </VisiblePassword>
                             </FormGroup>
                             <Button className="login" outline onClick={Login}>Sign in</Button>
                         </Form>
