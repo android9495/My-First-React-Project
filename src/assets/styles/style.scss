@@ -605,4 +605,107 @@ section.show-hidden-box {
   }
 }
 /*==========USER ACCOUNT============*/
+/*==========About============*/
+.about-box-one{
+  display: flex;
+  margin-top: 5rem;
+  column-gap: 6rem;
+}
+.aboutBackgroundContainer {
+  position: relative;
+  width: 100%;
+  height: 70vh;
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+.memberWrapper{
+  .memberWrap {
+    position: relative;
+    width: 100%;
+    display: block;
+    margin-bottom: 5rem;
+    .memberMedia {
+      width: 100%;
+      height: 45vh;
+      margin-bottom: 2rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+.minesWrap {
+  position: relative;
+  width: 100%;
+  display: block;
+  margin-bottom: 5rem;
+  .memberMedia {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    margin-bottom: 2rem;
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+.minesWrapper {
+  margin-top: 7rem;
+  h2{
+    margin-bottom: 4rem;
+  }
+}
+/*==========About============*/
+/*==========BLOG============*/
+.blogContainer{
+  position: relative;
+  width: 100%;
+  display: block;
+  h1{
+    margin: 3rem 0;
+  }
+}
+.blogContainer {
+  position: relative;
+  width: 100%;
+  display: block;
+  margin-bottom: 6rem;
+  .blogWrap {
+    position: relative;
+    width: 100%;
+    display: block;
+    margin-bottom: 4rem;
+    .blogMedia {
+      width: 100%;
+      height: 45vh;
+      margin-bottom: 2rem;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .blogInfo {
+      position: relative;
+      width: 100%;
+      display: block;
+      h2 {
+        margin: 2rem 0;
+      }
+      span.date {
+        font-size: 0.9rem;
+        font-weight: 400;
+      }
+    }
+  }
+}
+
+/*==========BLOG============*/
 

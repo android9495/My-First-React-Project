@@ -13,14 +13,23 @@ const Header = () => {
                 <ul>
                     <MenuItem link="/" label="home"/>
                     <MenuItem link="/about-us" label="about us"/>
-                    <MenuItem link="/stones" label="stones"/>
                     <MenuItem link="/blog" label="blog"/>
                     <MenuItem link="/contact-us" label="contact us"/>
                     {
                         user.firstname ?
-                            (<MenuItem link="/user-account" label="Hello" username={user.firstname}/>)
+                            (
+                                <>
+                                    <MenuItem link="/stones-login" label="stones for special users"/>
+                                    <MenuItem link="/user-account" label="Hello" username={user.firstname}/>
+                                </>
+                            )
                             :
-                            (<MenuItem link="/register" label="register"/>)
+                            (
+                                <>
+                                    <MenuItem link="/stones" label="stones"/>
+                                    <MenuItem link="/register" label="register"/>
+                                </>
+                            )
                     }
                 </ul>
             </nav>
