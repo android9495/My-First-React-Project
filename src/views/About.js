@@ -87,7 +87,17 @@ const About = () => {
                                                 <img src={mines[index].urls.regular} alt=""/>
                                             </MemberMedia>
                                             <MemberInfo>
-                                                <p>{mines[index].alt_description}</p>
+                                                {
+                                                    mines[index].alt_description ?
+                                                        (
+                                                            <p>{mines[index].alt_description}</p>
+                                                        )
+                                                        :
+                                                        (
+                                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci dolorum eaque eius enim error esse excepturi fugiat labore minus natus officiis, optio, perspiciatis porro quasi quo tenetur, vel veritatis voluptate?</p>
+                                                        )
+                                                }
+
                                             </MemberInfo>
                                         </MinesWrap>
                                     </Col>

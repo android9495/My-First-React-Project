@@ -1,15 +1,26 @@
-import {Section, SectionUserAccount} from "../base/section";
-import {Button, Col, Container, FormGroup, Input, Label, Row} from "reactstrap";
+import {SectionUserAccount} from "../base/section";
+import {Col, Container, FormGroup, Input, Label, Row} from "reactstrap";
 import {useSelector} from "react-redux";
 import {useInputChange} from "../hooks/useInputChange";
 import {VisiblePassword} from "../base/visiblePassword";
+import {useNavigate} from 'react-router-dom';
+import {useEffect} from "react";
 
 const UserAccount = () => {
+    const nav = useNavigate();
     const {user} = useSelector(state => state)
     const [firstnameUser,onChangeNameUser] = useInputChange('');
     const [lastNameUser,onChangeFamilyUser] = useInputChange('');
     const [emailUser,onChangeEmailUser] = useInputChange('');
     const [passwordUser,onChangePasswordUser] = useInputChange('');
+    const [phoneUser,onChangePhoneUser] = useInputChange('');
+    const userFirstName = JSON.parse(localStorage.getItem('userFirstName'));
+    console.log(user);
+    useEffect(() => {
+        if(!user.firstname){
+            return nav('/register')
+        }
+    },[])
     return(
         <SectionUserAccount>
             <Container className="userAccountContainer my-5">
@@ -29,6 +40,10 @@ const UserAccount = () => {
                             <FormGroup className="form__group field">
                                 <Input id="emailUser" name={emailUser} type="email" className="form__field" onChange={onChangeEmailUser} value={user.email}/>
                                 <Label for="emailUser" className="form__label">Email</Label>
+                            </FormGroup>
+                            <FormGroup className="form__group field">
+                                <Input id="phoneUser" name={phoneUser} type="text" className="form__field" onChange={onChangePhoneUser} value={user.phone}/>
+                                <Label for="phoneUser" className="form__label">Phone</Label>
                             </FormGroup>
                             <FormGroup className="form__group field password">
                                 <Input id="passUser" name={passwordUser} type="password" className="form__field" onChange={onChangePasswordUser} value={user.password}/>

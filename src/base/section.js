@@ -25,3 +25,19 @@ export const SectionUserAccount = (props) => {
         </section>
     )
 }
+export const SectionFullWidth = (props) => {
+    const {children} = props;
+    return(
+        <section className="wrapperFullWidth">
+            {children}
+        </section>
+    )
+}
+export const SectionLargePadding = (props) => {
+    const {children} = props;
+    return(
+        <section className="wrapperLargePadding">
+            {children}
+        </section>
+    )
+}

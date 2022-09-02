@@ -15,7 +15,7 @@ const routes = [
     {path:'',element:<Home/>,layout:Layout},
     {path:'/about-us',element:<About/>,layout:Layout},
     {path:'/blog',element:<Blog/>,layout:Layout},
-    {path:'/single-blog/:post_id',element:<SingleBlog/>,layout:Layout},
+    {path:'/blog/:post_id',element:<SingleBlog/>,layout:Layout},
     {path:'/stones',element:<Stones/>,layout:Layout},
     {path:'/stones-login',element:<StonesLogin/>,layout:Layout},
     {path:'/contact-us',element:<Contact/>,layout:Layout},

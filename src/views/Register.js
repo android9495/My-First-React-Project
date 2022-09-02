@@ -1,7 +1,7 @@
 import {Button, Col, Container, Form, FormGroup, Input, Label, Row} from "reactstrap";
 import {SectionDefault} from "../base/section";
 import {useInputChange} from "../hooks/useInputChange";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {ACTION_UPDATE_USER} from "../redux/slices/userSlice";
 import {useNavigate} from 'react-router-dom';
 import {useEffect, useState} from "react";
@@ -18,6 +18,7 @@ const Register = () => {
     const [avatar,setAvatar] = useState([]);
     const [avatarURLs,setAvatarURLs] = useState([]);
     const nav = useNavigate();
+    const {user} = useSelector(state => state)
 
     useEffect(() => {
         if(avatar.length < 1) return;
@@ -29,7 +30,7 @@ const Register = () => {
     const Login = async () => {
         const userPicture = await setConvert();
         dispatcher(ACTION_UPDATE_USER({avatar:userPicture,firstname:firstname,lastname:lastname,email:email,phone:phoneNum,password:password}));
-        localStorage.setItem('user',firstname)
+        localStorage.setItem('userFirstName',JSON.stringify(firstname));
         setTimeout(() => {
             nav('/register-final')
         },500)
