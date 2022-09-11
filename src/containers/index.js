@@ -1,8 +1,7 @@
-import MenuItem from "../base/menuItem";
-import {Link} from "react-router-dom";
 import TransparentHeader from "./headers/TransparentHeader";
 import Header from "./headers/Header";
 import {useLocation} from "react-router-dom";
+import Footer from "./footer/Footer";
 
 const Layout = ({children}) => {
     const {pathname} = useLocation();
@@ -22,9 +21,7 @@ const Layout = ({children}) => {
                    ('')
                    :
                    (
-                       <footer>
-                           footer
-                       </footer>
+                      <Footer/>
                    )
             }
         </>

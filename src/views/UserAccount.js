@@ -6,6 +6,7 @@ import {VisiblePassword} from "../base/visiblePassword";
 import {useNavigate} from 'react-router-dom';
 import {useEffect} from "react";
 
+
 const UserAccount = () => {
     const nav = useNavigate();
     const {user} = useSelector(state => state)
@@ -21,6 +22,7 @@ const UserAccount = () => {
             return nav('/register')
         }
     },[])
+
     return(
         <SectionUserAccount>
             <Container className="userAccountContainer my-5">

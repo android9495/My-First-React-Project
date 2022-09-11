@@ -18,7 +18,7 @@ const Register = () => {
     const [avatar,setAvatar] = useState([]);
     const [avatarURLs,setAvatarURLs] = useState([]);
     const nav = useNavigate();
-    const {user} = useSelector(state => state)
+  /*  const {user} = useSelector(state => state)*/
 
     useEffect(() => {
         if(avatar.length < 1) return;
@@ -31,6 +31,11 @@ const Register = () => {
         const userPicture = await setConvert();
         dispatcher(ACTION_UPDATE_USER({avatar:userPicture,firstname:firstname,lastname:lastname,email:email,phone:phoneNum,password:password}));
         localStorage.setItem('userFirstName',JSON.stringify(firstname));
+        localStorage.setItem('userLastName',JSON.stringify(lastname));
+        localStorage.setItem('userAvatar',JSON.stringify(userPicture));
+        localStorage.setItem('userEmail',JSON.stringify(email));
+        localStorage.setItem('userPhone',JSON.stringify(phoneNum));
+        localStorage.setItem('userPassword',JSON.stringify(password));
         setTimeout(() => {
             nav('/register-final')
         },500)
