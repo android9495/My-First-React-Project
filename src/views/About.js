@@ -4,6 +4,7 @@ import {useEffect, useState} from "react";
 import unsplash from "../helpers/unsplash";
 import {MemberInfo, MemberMedia, MemberWrap} from "../base/member";
 import {MinesWrap} from "../base/mines";
+import {SetTitle} from "../helpers/setTitle";
 
 const About = () => {
     const [members,setMembers] = useState([]);
@@ -25,6 +26,7 @@ const About = () => {
     useEffect(() => {
         getMinesPhotos();
         getPhotos();
+        SetTitle('Paya Stone - About us')
     },[])
 
 

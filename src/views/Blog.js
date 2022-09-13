@@ -4,6 +4,7 @@ import unsplash from "../helpers/unsplash";
 import {useEffect, useState} from "react";
 import {BlogInfo, BlogMedia, BlogWrap} from "../base/blog";
 import {Link} from "react-router-dom";
+import {SetTitle} from "../helpers/setTitle";
 
 const Blog = () => {
     const [blogData,onChangeBlogData] = useState([]);
@@ -14,8 +15,13 @@ const Blog = () => {
         onChangeBlogData(response.data);
         console.log(response.data)
     }
+    const forceScrollTop = () => {
+        window.scrollTo(0,0);
+    }
     useEffect(() => {
+        forceScrollTop();
         getBlogData();
+        SetTitle('Paya Stone - Blog');
     },[])
     return(
         <Section>

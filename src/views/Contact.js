@@ -1,7 +1,12 @@
 import {SectionFullWidth} from "../base/section";
 import {Col, Container, Row} from "reactstrap";
+import {useEffect} from "react";
+import {SetTitle} from "../helpers/setTitle";
 
 const Contact = () => {
+    useEffect(() => {
+        SetTitle('Paya Stone -  Contact us')
+    },[])
     return(
         <SectionFullWidth>
             <Container fluid className="p-0 contactContainer">

@@ -4,20 +4,21 @@ import unsplash from "../helpers/unsplash";
 import {useEffect, useState} from "react";
 import {StoneInfo, StoneMedia, StoneWrap} from "../base/stones";
 import{useSelector} from "react-redux";
+import {SetTitle} from "../helpers/setTitle";
 
 const Stones = () => {
     const [stones,onChangeStones] = useState([]);
     const {user} = useSelector(state => state);
     const getStonesData = async term => {
-        const response = await unsplash.get('search/photos?per_page=12&query=marble stone', {
+        const response = await unsplash.get('search/photos?per_page=16&query=marble stone', {
             params: { query: term }
         });
         onChangeStones(response.data.results)
     }
     useEffect(() => {
         getStonesData();
+        SetTitle('Paya Stone - Stones with login');
     },[])
-    console.log();
     return(
         <Section>
             {

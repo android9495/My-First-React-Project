@@ -3,17 +3,19 @@ import {Col, Container, Row} from "reactstrap";
 import unsplash from "../helpers/unsplash";
 import {useEffect, useState} from "react";
 import {StoneInfo, StoneMedia, StoneWrap} from "../base/stones";
+import {SetTitle} from "../helpers/setTitle";
 
 const Stones = () => {
     const [stones,onChangeStones] = useState([]);
     const getStonesData = async term => {
-        const response = await unsplash.get('search/photos?per_page=12&query=stone', {
+        const response = await unsplash.get('search/photos?per_page=16&query=stone', {
             params: { query: term }
         });
         onChangeStones(response.data.results)
     }
     useEffect(() => {
         getStonesData();
+        SetTitle('Paya Stone - Stones');
     },[])
     console.log();
     return(

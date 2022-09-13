@@ -14,8 +14,12 @@ const SingleBlog = () => {
         });
         onChangeSingleBlogImage(response.data[post_id-1].urls.regular);
     }
+    const forceScrollTop = () => {
+        window.scrollTo(0,0);
+    }
     useEffect(() => {
-       getSingleBlogData()
+        forceScrollTop();
+        getSingleBlogData()
     },[])
 
     return(

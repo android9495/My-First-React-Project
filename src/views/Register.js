@@ -7,6 +7,7 @@ import {useNavigate} from 'react-router-dom';
 import {useEffect, useState} from "react";
 import {Base64} from "../helpers/base64";
 import {VisiblePassword} from "../base/visiblePassword";
+import {SetTitle} from "../helpers/setTitle";
 
 const Register = () => {
     const dispatcher = useDispatch();
@@ -25,6 +26,7 @@ const Register = () => {
         const newAvatarURLs = [];
         avatar.forEach(image => newAvatarURLs.push(URL.createObjectURL(image)));
         setAvatarURLs(newAvatarURLs);
+        SetTitle('Paya Stone - Register');
     },[avatar])
 
     const Login = async () => {

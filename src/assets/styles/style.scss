@@ -45,6 +45,7 @@ section.wrapper {
   margin-top: 10vh;
   @include paddingLR;
   color: $white-color;
+  min-height: 90vh;
 }
 html{
   overflow-x: hidden;

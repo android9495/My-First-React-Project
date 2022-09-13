@@ -18,9 +18,12 @@ import {
 } from "../base/slideTypes";
 import { DefaultPlayer as Video } from 'react-html5video';
 import 'react-html5video/dist/styles.css';
-
-
-const Home = () => {
+import {useEffect} from "react";
+import {SetTitle} from "../helpers/setTitle";
+const Home = (props) => {
+    useEffect(() => {
+        SetTitle('Paya Stone - Home');
+    },[props])
     return(
         <Container fluid className="homeSliderContainer">
             <Row className="g-0">

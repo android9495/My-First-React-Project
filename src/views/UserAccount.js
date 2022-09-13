@@ -5,6 +5,7 @@ import {useInputChange} from "../hooks/useInputChange";
 import {VisiblePassword} from "../base/visiblePassword";
 import {useNavigate} from 'react-router-dom';
 import {useEffect} from "react";
+import {SetTitle} from "../helpers/setTitle";
 
 
 const UserAccount = () => {
@@ -21,15 +22,16 @@ const UserAccount = () => {
         if(!user.firstname){
             return nav('/register')
         }
+        SetTitle('Paya Stone - User Account');
     },[])
 
     return(
         <SectionUserAccount>
             <Container className="userAccountContainer my-5">
                 <Row className="justify-content-center">
-                    <Col md={6} className="d-flex align-items-center justify-content-center my-5 account-user-wrap flex-column">
+                    <Col md={6} className="d-flex align-items-center justify-content-center mt-5 account-user-wrap flex-column">
                         <img src={user.avatar} alt="" className="user-profile mt-5"/>
-                        <h1 className="my-5">{user.firstname} {user.lastname}</h1>
+                        <h1 className="mt-5">{user.firstname} {user.lastname}</h1>
                         <form>
                             <FormGroup className="form__group field">
                                 <Input id="firstNameUser" name={firstnameUser} type="text" className="form__field" onChange={onChangeNameUser} value={user.firstname}/>
